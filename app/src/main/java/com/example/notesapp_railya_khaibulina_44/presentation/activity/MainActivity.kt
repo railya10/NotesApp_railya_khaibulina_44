@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                     viewModel.createNoteState.collect {
                         when (it) {
                             is UIState.Loading -> {
+
                                 TODO("show progress bar")
                             }
                             is UIState.Error -> {
