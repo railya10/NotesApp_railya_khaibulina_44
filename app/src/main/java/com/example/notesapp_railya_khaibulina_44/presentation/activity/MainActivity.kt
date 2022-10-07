@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-
             var i = 0
             binding.btnAddNote.setOnClickListener {
                 i++
