@@ -6,6 +6,7 @@ import com.example.notesapp_railya_khaibulina_44.data.mapper.noteToNoteEntity
 import com.example.notesapp_railya_khaibulina_44.domain.model.Note
 import com.example.notesapp_railya_khaibulina_44.domain.repository.NoteRepository
 import com.example.notesapp_railya_khaibulina_44.domain.utils.Resource
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -15,6 +16,7 @@ class NoteRepositoryImpl @Inject constructor(
 ) : NoteRepository {
 
     override fun createNote(note: Note): Flow<Resource<Unit>> = flow {
+        delay(2000)
         emit(Resource.Loading())
         try {
             val data = noteDao.createNote(note.noteToNoteEntity())

@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 viewModel.getAllNotesState.collect {
                     when (it) {
                         is UIState.Loading -> {
-                            TODO("show progress bar")
+
                         }
                         is UIState.Error -> {
                             Toast.makeText(this@MainActivity, it.error, Toast.LENGTH_SHORT).show()
@@ -69,7 +69,43 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.editNOteState.collect {
+                        when (it) {
+                            is UIState.Loading -> {
+                                TODO("show progress bar")
+                            }
+                            is UIState.Error -> {
+                                Toast.makeText(this@MainActivity, it.error, Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                            is UIState.Success -> {
+                                viewModel.getAllNotes()
 
+                            }
+                        }
+                    }
+                }
+            }
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.deleteNoteState.collect {
+                        when (it) {
+                            is UIState.Loading -> {
+                                TODO("show progress bar")
+                            }
+                            is UIState.Error -> {
+                                Toast.makeText(this@MainActivity, it.error, Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                            is UIState.Success -> {
+                                viewModel.getAllNotes()
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

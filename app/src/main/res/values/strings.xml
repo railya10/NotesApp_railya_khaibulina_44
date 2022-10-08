@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NotesApp_railya_khaibulina_44</string>
+    <string name="notes_application">Notes Application</string>
+    <string name="add_note">Add note</string>
 </resources>

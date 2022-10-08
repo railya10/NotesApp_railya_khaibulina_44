@@ -9,7 +9,7 @@ interface NoteDao {  //CRUD
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun createNote (noteEntity: NoteEntity)
 
-    @Query ("SELECT * FROM")
+    @Query ("SELECT * FROM notes")
     suspend fun getAllNotes() : List <NoteEntity>
 
     @Update
